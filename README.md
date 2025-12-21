@@ -1,3 +1,31 @@
+![TaskMan](https://0x1deadb0b.github.io/assets/0xtaskman_2048x1024.png)
+
+A lightweight task automation tool for C/C++ projects. Handles building, syncing, and project management across Windows and Linux.
+
+## Quick Start
+
+1. Add TaskMan as a submodule
+
+```bash
+git submodule add https://github.com/0x1deadb0b/TaskMan.git ./path/to/TaskMan
+
+git submodule update --init --recursive # optional
+```
+
+2. Run setup script
+
+```bash
+cd Tools/TaskMan
+setup.bat
+```
+```bash
+cd Tools/TaskMan
+./setup.sh
+```
+
+3. Copy and modify config
+
+```python
 import os
 
 from Scripts.terminal import run_command, run_commands
@@ -8,6 +36,7 @@ import platform
 IS_WINDOWS = platform.system() == 'Windows'
 IS_LINUX = platform.system() == 'Linux'
 
+# SOME EXAMPLE CUSTOM FUNCTIONS
 def generate_projects() -> str:
     PREMAKE_FILE = os.path.join("Projects", "premake5.lua")
     if IS_WINDOWS:
@@ -16,20 +45,20 @@ def generate_projects() -> str:
         return f'premake5 --file={PREMAKE_FILE} gmake'
 
 def clean_build() -> str:
-    msbuild = 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\Bin\\MSBuild.exe'
+    msbuild = 'PATH\\TO\\MSBuild.exe'
 
     if IS_WINDOWS:
-        return f'"{msbuild}" { os.path.join("Build", "vs2022", "PixelByte.sln") } /t:Clean'
+        return f'"{msbuild}" { os.path.join("PATH", "TO", "YOUR.sln") } /t:Clean'
     elif IS_LINUX:
-        return f'make -C { os.path.join("Build", "gmake") } clean'
+        return f'make -C { os.path.join("PATH", "TO", "YOUR gmake") } clean'
 
 def build_project(config:str) -> str:
-    msbuild = 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\Bin\\MSBuild.exe'
+    msbuild = 'PATH\\TO\\MSBuild.exe'
 
     if IS_WINDOWS:
-        return f'"{msbuild}" { os.path.join("Build", "vs2022", "PixelByte.sln") } /p:Configuration={config}'
+        return f'"{msbuild}" { os.path.join("PATH", "TO", "YOUR.sln") } /p:Configuration={config}'
     elif IS_LINUX:
-        return f'bear --output compile_commands.json -- make -C { os.path.join("Build", "gmake") } config={config}'
+        return f'bear --output compile_commands.json -- make -C { os.path.join("PATH", "TO", "YOUR gmake") } config={config}'
 
 TASKS = {
     'clean': {
@@ -83,3 +112,27 @@ TASKS = {
         }
     }
 }
+
+```
+
+4. Create helper scripts in project root
+```bash
+@echo off
+
+title taskman
+
+call .\Tools\TaskMan\venv\Scripts\activate.bat
+
+python .\Tools\TaskMan\taskman.py
+
+```
+```bash
+#!/bin/bash
+
+echo -ne "\033]0;taskman\007"
+
+source ./Tools/TaskMan/venv/bin/activate
+
+python ./Tools/TaskMan/taskman.py
+
+```
