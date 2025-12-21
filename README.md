@@ -15,11 +15,11 @@ git submodule update --init --recursive # optional
 2. Run setup script
 
 ```bash
-cd Tools/TaskMan
+cd path/to/TaskMan
 setup.bat
 ```
 ```bash
-cd Tools/TaskMan
+cd path/to/TaskMan
 ./setup.sh
 ```
 
@@ -121,9 +121,9 @@ TASKS = {
 
 title taskman
 
-call .\Tools\TaskMan\venv\Scripts\activate.bat
+call .\path\to\TaskMan\venv\Scripts\activate.bat
 
-python .\Tools\TaskMan\taskman.py
+python .\path\to\TaskMan\taskman.py
 
 ```
 ```bash
@@ -131,8 +131,8 @@ python .\Tools\TaskMan\taskman.py
 
 echo -ne "\033]0;taskman\007"
 
-source ./Tools/TaskMan/venv/bin/activate
+source ./path/to/TaskMan/venv/bin/activate
 
-python ./Tools/TaskMan/taskman.py
+python ./path/to/TaskMan/taskman.py
 
 ```
