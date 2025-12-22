@@ -38,9 +38,9 @@ IS_LINUX = platform.system() == 'Linux'
 
 # SOME EXAMPLE CUSTOM FUNCTIONS
 def generate_projects() -> str:
-    PREMAKE_FILE = os.path.join("Projects", "premake5.lua")
+    PREMAKE_FILE = os.path.join("PATH", "TO", "premake5.lua")
     if IS_WINDOWS:
-        return f'{ os.path.join("Vendors", "premake5", "premake5.exe") } --file={PREMAKE_FILE} vs2022'
+        return f'{ os.path.join("PATH", "TO", "premake5.exe") } --file={PREMAKE_FILE} vs2022'
     elif IS_LINUX:
         return f'premake5 --file={PREMAKE_FILE} gmake'
 
@@ -121,9 +121,9 @@ TASKS = {
 
 title taskman
 
-call .\path\to\TaskMan\venv\Scripts\activate.bat
+call .\\path\\to\\TaskMan\\venv\\Scripts\\activate.bat
 
-python .\path\to\TaskMan\taskman.py
+python .\\path\\to\\TaskMan\\taskman.py
 
 ```
 ```bash
