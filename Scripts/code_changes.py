@@ -8,7 +8,7 @@ def status(working_dir: str) -> bool:
 
 def sync(commit:str, working_dir: str) -> bool:
     print('[INFO] Syncing projects.')
-    print("[INFO] Pulling latest changes from GitHub.")
+    print("[INFO] Pulling latest changes from Git.")
     
     okay = True
 
