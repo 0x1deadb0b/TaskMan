@@ -1,4 +1,6 @@
-python3 -m venv venv
+python --version
+
+python -m venv venv
 
 source ./venv/bin/activate
 
