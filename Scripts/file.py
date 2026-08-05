@@ -21,7 +21,7 @@ def extract(archive_path: str, dest_dir: str, working_dir: str = ".") -> bool:
     full_dest = os.path.join(working_dir, dest_dir)
 
     if not os.path.exists(full_archive):
-        print(f"[INFO] Archive does not exist: {archive_path}")
+        print(f"[ERROR] Archive does not exist: {archive_path}")
         return False
 
     os.makedirs(full_dest, exist_ok=True)

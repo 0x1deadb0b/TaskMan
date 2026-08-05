@@ -1,11 +1,12 @@
 import subprocess
 
-# Runs a shell command and returns its output
 def run_command(
         command:str,
         working_dir:str = None
     ) -> bool:
-    
+
+    print(f"[INFO] Executing: {command}")
+
     result = subprocess.run(
         command,
         capture_output=True,
@@ -20,7 +21,6 @@ def run_command(
     if result.stderr.strip():
         print(result.stderr.strip())
 
-    # If the command fails
     if result.returncode != 0:
         print(f"[ERROR] Command failed: {command}")
         return False
