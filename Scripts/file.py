@@ -2,6 +2,7 @@ import os
 import zipfile
 import tarfile
 import urllib.request
+import shutil
 
 def download(url: str, output_path: str, working_dir: str = ".") -> bool:
     full_path = os.path.join(working_dir, output_path)
@@ -42,3 +43,13 @@ def extract(archive_path: str, dest_dir: str, working_dir: str = ".") -> bool:
     except Exception as e:
         print(f"[ERROR] Extraction failed: {e}")
         return False
+
+def delete_folder(folder_path:str, working_dir:str) -> bool:
+    full_path = os.path.join(working_dir, folder_path)
+    if os.path.exists(full_path):
+        print(f"[INFO] Deleting {full_path}")
+        shutil.rmtree(full_path)
+        print(f"[INFO] {full_path} deleted successfully.")
+    else:
+        print(f"[INFO] {full_path} directory not found.")
+    return True

@@ -1,5 +1,4 @@
 import os
-import shutil
 
 # Cleans the white space on a single line of text
 def clean_line(line: str) -> str:
@@ -47,13 +46,3 @@ def clean_files(
         print("[INFO] Files cleaned successfully.")
 
     return okay
-
-def delete_folder(folder_path:str, working_dir:str) -> bool:
-    full_path = os.path.join(working_dir, folder_path)
-    if os.path.exists(full_path):
-        print(f"[INFO] Deleting {full_path}")
-        shutil.rmtree(full_path)
-        print(f"[INFO] {full_path} deleted successfully.")
-    else:
-        print(f"[INFO] {full_path} directory not found.")
-    return True
