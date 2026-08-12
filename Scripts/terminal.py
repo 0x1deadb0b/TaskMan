@@ -28,7 +28,7 @@ def run_command(
     return True
 
 def run_commands(
-        commands:list,
+        commands:list[str],
         working_dir:str = None
     ) -> bool:
     

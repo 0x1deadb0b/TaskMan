@@ -4,14 +4,15 @@ import tarfile
 import urllib.request
 import shutil
 
-def delete_folder(folder_path:str, working_dir:str) -> bool:
-    full_path = os.path.join(working_dir, folder_path)
-    if os.path.exists(full_path):
-        print(f"[INFO] Deleting {full_path}")
-        shutil.rmtree(full_path)
-        print(f"[INFO] {full_path} deleted successfully.")
-    else:
-        print(f"[INFO] {full_path} directory not found.")
+def delete_folders(folder_paths: tuple[str, ...], working_dir: str) -> bool:
+    for folder_path in folder_paths:
+        full_path = os.path.join(working_dir, folder_path)
+        if os.path.exists(full_path):
+            print(f"[INFO] Deleting {full_path}")
+            shutil.rmtree(full_path)
+            print(f"[INFO] {full_path} deleted successfully.")
+        else:
+            print(f"[INFO] {full_path} directory not found.")
     return True
 
 def download(url: str, output_path: str, working_dir: str = ".") -> bool:

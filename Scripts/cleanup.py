@@ -21,8 +21,8 @@ def clean_file(filename: str) -> bool:
         return False
 
 def clean_files(
-        file_extensions: tuple, 
-        ignore_dir: tuple,
+        file_extensions: tuple[str, ...], 
+        ignore_dir: tuple[str, ...],
         working_dir: str) -> bool:
     
     print("[INFO] Cleaning files.")
